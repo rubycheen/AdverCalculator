@@ -7,7 +7,7 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument('-d', '--data', help='Data File Path', default='cropped.csv')
     parser.add_argument('-c', '--cond', help='Condition File Path', default='conditions.json')
-    parser.add_argument('-o', '--output', help='Output File Path', default='result.csv')
+    parser.add_argument('-o', '--output', help='Output File Path', default='result.json')
 
     args = parser.parse_args()
 

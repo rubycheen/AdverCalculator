@@ -43,6 +43,10 @@ e.g. `python sowing_crop.py -i preprocessed.csv -s 2019-01-01 -o cropped.csv`
 
 `-s` sowing date e.g. `-s 2019-01-01`
 
+`-b` breed e.g. `-b rice`
+
+`-t` thermal breaking points e.g. `-t "[200, 650, 950, 1100, 1250, 1700]"`
+
 `-o` output file path e.g. `-o cropped.csv`
 
 

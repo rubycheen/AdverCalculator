@@ -1,6 +1,13 @@
 import argparse
 import pandas as pd
 from datetime import datetime, timedelta
+import ast
+
+def arg_as_list(s):                                                            
+    v = ast.literal_eval(s)                                                    
+    if type(v) is not list:                                                    
+        raise argparse.ArgumentTypeError("Argument \"%s\" is not a list" % (s))
+    return v    
 
 class Crop:
     def __init__(self, df, sowing_date, breed='rice', breakpoints = [200, 650, 950, 1100, 1250, 1700]):
@@ -43,6 +50,8 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument('-i', '--input', help='Input File Path', default='preprocessed.csv')
     parser.add_argument('-s', '--sowing_date', help='Sowing Date, e.g. 1979-01-01')
+    parser.add_argument('-b', '--breed', help='Breed, e.g. Rice', default='rice')
+    parser.add_argument('-t', '--thermal', type=arg_as_list, default=[200, 650, 950, 1100, 1250, 1700], help="list of thermal breaking points e.g. '[200, 650, 950, 1100, 1250, 1700]'")
     parser.add_argument('-o', '--output', help='Output File Path', default='cropped.csv')
 
     args = parser.parse_args()
@@ -51,7 +60,7 @@ if __name__ == '__main__':
         print(f'Cropping {args.input}...')
         df = pd.read_csv(args.input)
 
-        crop = Crop(df, args.sowing_date)
+        crop = Crop(df, args.sowing_date, args.breed, args.thermal)
         crop_df = crop.generate_df()
 
         pd.DataFrame(crop_df).to_csv(args.output, index=False)

@@ -25,7 +25,7 @@ class Crop:
         return 'v1'
 
     def generate_df(self):
-        crop_df = {'date':[], 'period':[], 'avg_temp':[], 'min_temp':[], 'max_temp':[], 'temp_diff':[]}
+        crop_df = {'date':[], 'period':[], 'avg_temp':[], 'min_temp':[], 'max_temp':[], 'temp_diff':[], 'rain':[]}
         daily_thermal = 0
         cur_date = self.sowing_date
         for i in range(len(self.df)):
@@ -42,6 +42,7 @@ class Crop:
                 crop_df['min_temp'].append(self.df['temp_min_date'][i])
                 crop_df['max_temp'].append(self.df['temp_max_date'][i])
                 crop_df['temp_diff'].append(round(self.df['temp_max_date'][i]-self.df['temp_min_date'][i],2))
+                crop_df['rain'].append(self.df['rain_date'][i])
                 cur_date = cur_date + timedelta(days=1)
         
         return crop_df

@@ -32,7 +32,7 @@ class Crop:
             date = datetime.strptime(self.df['date'][i], '%Y-%m-%d').date()
             # print(date, cur_date)
             if date == cur_date:
-                daily_thermal += (min(40, self.df['temp_max_date'][i]) + min(40, df['temp_min_date'][i])) / 2 - 10
+                daily_thermal += (min(40, self.df['temp_max_date'][i]) + min(40, self.df['temp_min_date'][i])) / 2 - 10
                 period = self.thermal2code(daily_thermal)
                 if period == None:
                     break

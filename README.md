@@ -64,7 +64,7 @@ e.g. `python calculator.py -d cropped.csv -c conditions.json -o result.json`
 `-o` output file path e.g. `-o result.json`
 
 
-### forecast.py
+### `forecast.py`
 Given history weather data and cold and warm month forecast to calculate the forecast temparature
 
 e.g. `python forecast.py -i preprocessed.csv -o forecast.csv`
